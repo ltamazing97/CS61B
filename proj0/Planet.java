@@ -79,7 +79,9 @@ public class Planet {
 	public double calcNetForceExertedByX(Planet[] Ps) {
 		double Fx = 0;
 		for (Planet s : Ps) {
-			Fx += this.calcForceExertedByX(s);
+			if(!this.equals(s)) {
+				Fx += this.calcForceExertedByY(s);
+			}
 		}
 		return Fx;
 	}
@@ -87,7 +89,9 @@ public class Planet {
 	public double calcNetForceExertedByY(Planet[] Ps) {
 		double Fy = 0;
 		for (Planet s : Ps) {
-			Fy += this.calcForceExertedByY(s);
+			if(!this.equals(s)) {
+				Fy += this.calcForceExertedByY(s);
+			}
 		}
 		return Fy;
 	}
@@ -104,7 +108,7 @@ public class Planet {
 	}
 
 	public void draw() {
-		StdDraw.picture(this.xxPos, this.yyPos, "images/" + this.imgFileName);
+		StdDraw.picture(this.xxPos, this.yyPos, "./images/" + this.imgFileName);
 	}
 
 }
