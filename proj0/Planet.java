@@ -80,7 +80,7 @@ public class Planet {
 		double Fx = 0;
 		for (Planet s : Ps) {
 			if(!this.equals(s)) {
-				Fx += this.calcForceExertedByY(s);
+				Fx += this.calcForceExertedByX(s);
 			}
 		}
 		return Fx;
