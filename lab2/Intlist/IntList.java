@@ -106,7 +106,7 @@ public class IntList {
         IntList q = returnList;
         A = A.rest;
         while (A != null) {
-            q.rest = A;
+            q.rest = new IntList(A.first, null);
             A = A.rest;
             q = q.rest;
         }
