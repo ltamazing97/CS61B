@@ -1,52 +1,52 @@
-public class ArrayDeque<Item> {
+public class ArrayDeque<T> {
 
-	private Item[] items;
+	private T[] items;
 	private int size;
 	private int nextFirst;
 	private int nextLast;
 
 	public ArrayDeque() {
-		items = (Item[]) new Object[8];
+		items = (T[]) new Object[8];
 		size = 0;
 		nextFirst = 0;
 		nextLast = 1;
 	}
 
-	public int pulsOne(int index) {
+	private int pulsOne(int index) {
 		return (index + 1) % items.length;
 	}
 
-	public int minusOne(int index) {
+	private int minusOne(int index) {
 		return (index - 1 + items.length) % items.length;
 	}
 
-	public boolean isSparse() {
-		return items.length >= 16 && size < items.length / 4;
+	private boolean isSparse() {
+		return (items.length >= 16) && (size < (items.length / 4));
 	}
 
-	public void resize(int capacity) {
-		Item[] a = (Item[]) new Object[capacity];
+	private void resize(int capacity) {
+		T[] a = (T[]) new Object[capacity];
 		System.arraycopy(items, pulsOne(nextFirst), a, 0, size);
 		items = a;
 		nextFirst = capacity - 1;
 		nextLast = size;
 	}
 
-	public void addFirst(Item x) {
+	public void addFirst(T x) {
 		if (size == items.length) {
 			resize(size * 2);
 		}
 		items[nextFirst] = x;
-		minusOne(nextFirst);
+		nextFirst = minusOne(nextFirst);
 		size += 1;
 	}
 
-	public void addLast(Item x) {
+	public void addLast(T x) {
 		if (size == items.length) {
 			resize(size * 2);
 		}
 		items[nextLast] = x;
-		pulsOne(nextLast);
+		nextLast = pulsOne(nextLast);
 		size += 1;
 	}
 
@@ -65,27 +65,27 @@ public class ArrayDeque<Item> {
 		}
 	}
 
-	public Item removeFirst() {
+	public T removeFirst() {
 		if (isSparse()) {
 			resize(items.length / 2);
 		}
-		Item p = items[pulsOne(nextFirst)];
+		T p = items[pulsOne(nextFirst)];
 		items[pulsOne(nextFirst)] = null;
 		nextFirst = pulsOne(nextFirst);
 		return p;
 	}
 
-	public Item removeLast() {
+	public T removeLast() {
 		if (isSparse()) {
 			resize(items.length / 2);
 		}
-		Item p = items[minusOne(nextLast)];
+		T p = items[minusOne(nextLast)];
 		items[minusOne(nextLast)] = null;
 		nextLast = minusOne(nextLast);
 		return p;
 	}
 
-	public Item get(int index) {
+	public T get(int index) {
 		return items[index];
 	}
 	

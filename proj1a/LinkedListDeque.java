@@ -102,7 +102,7 @@ public class LinkedListDeque<T> {
 		return traverse(sentinel.next, index);
 	}
 
-	public T traverse(ListNode n, int index) {
+	private T traverse(ListNode n, int index) {
 		if (index == 0) {
 			return n.item;
 		} 
