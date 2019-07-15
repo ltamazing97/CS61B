@@ -94,7 +94,7 @@ public class ArrayDeque<T> {
 		return items[(start + index) % items.length];
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		ArrayDeque deque = new ArrayDeque();
 		deque.addFirst(10);
 		deque.addLast(20);
@@ -105,5 +105,5 @@ public class ArrayDeque<T> {
 		System.out.println(deque.removeLast());
 		System.out.println(deque.get(0));
 		deque.printDeque();
-	}
+	}*/
 }
