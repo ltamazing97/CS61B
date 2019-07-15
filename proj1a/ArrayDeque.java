@@ -60,8 +60,8 @@ public class ArrayDeque<T> {
 
 	public void printDeque() {
 		int i = pulsOne(nextFirst);
-		for (; i != minusOne(nextLast); pulsOne(i)) {
-			System.out.println(items[i] + " ");
+		for (; i != nextLast; i = pulsOne(i)) {
+			System.out.print(items[i] + " ");
 		}
 		System.out.println();
 	}
@@ -93,5 +93,17 @@ public class ArrayDeque<T> {
 		int start = pulsOne(nextFirst);
 		return items[(start + index) % items.length];
 	}
-	
+
+	public static void main(String[] args) {
+		ArrayDeque deque = new ArrayDeque();
+		deque.addFirst(10);
+		deque.addLast(20);
+		deque.addFirst(30);
+		deque.addLast(40);
+		boolean p1 = deque.isEmpty();
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.get(0));
+		deque.printDeque();
+	}
 }
