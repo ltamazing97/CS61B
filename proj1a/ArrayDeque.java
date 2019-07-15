@@ -63,7 +63,7 @@ public class ArrayDeque<T> {
 	}
 
 	public boolean isEmpty() {
-		return pulsOne(nextFirst) == nextLast;
+		return size == 0;
 	}
 
 	public int size() {
