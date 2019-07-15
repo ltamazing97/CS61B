@@ -60,9 +60,10 @@ public class ArrayDeque<T> {
 
 	public void printDeque() {
 		int i = pulsOne(nextFirst);
-		for (; i == minusOne(nextLast); pulsOne(i)) {
+		for (; i != minusOne(nextLast); pulsOne(i)) {
 			System.out.println(items[i] + " ");
 		}
+		System.out.println();
 	}
 
 	public T removeFirst() {
@@ -86,7 +87,11 @@ public class ArrayDeque<T> {
 	}
 
 	public T get(int index) {
-		return items[index];
+		if (index > size) {
+			return null;
+		}
+		int start = pulsOne(nextFirst);
+		return items[(start + index) % items.length];
 	}
 	
 }
