@@ -12,6 +12,13 @@ public class ArrayDeque<T> {
 		nextLast = 1;
 	}
 
+	/*public ArrayDeque(ArrayDeque other) {
+		items = (T[]) new Object[other.size];
+		nextFirst = other.nextFirst;
+		nextLast = other.nextLast;
+		size = other.size;
+	}*/
+
 	private int pulsOne(int index) {
 		return (index + 1) % items.length;
 	}
@@ -26,7 +33,12 @@ public class ArrayDeque<T> {
 
 	private void resize(int capacity) {
 		T[] a = (T[]) new Object[capacity];
-		System.arraycopy(items, pulsOne(nextFirst), a, 0, size);
+		//System.arraycopy(items, pulsOne(nextFirst), a, 0, size);
+		int oldIndex = pulsOne(nextFirst);
+		for (int newIndex = 0; newIndex < size; newIndex++) {
+			a[newIndex] = items[oldIndex];
+			oldIndex = pulsOne(oldIndex);
+		}
 		items = a;
 		nextFirst = capacity - 1;
 		nextLast = size;
@@ -73,6 +85,7 @@ public class ArrayDeque<T> {
 		T p = items[pulsOne(nextFirst)];
 		items[pulsOne(nextFirst)] = null;
 		nextFirst = pulsOne(nextFirst);
+		size -= 1;
 		return p;
 	}
 
@@ -83,6 +96,7 @@ public class ArrayDeque<T> {
 		T p = items[minusOne(nextLast)];
 		items[minusOne(nextLast)] = null;
 		nextLast = minusOne(nextLast);
+		size -= 1;
 		return p;
 	}
 
@@ -100,7 +114,39 @@ public class ArrayDeque<T> {
 		deque.addLast(20);
 		deque.addFirst(30);
 		deque.addLast(40);
+		deque.addFirst(10);
+		deque.addLast(20);
+		deque.addFirst(30);
+		deque.addLast(40);
+		deque.addFirst(10);
+		deque.addLast(20);
+		deque.addFirst(30);
+		deque.addLast(40);
+		deque.addFirst(10);
+		deque.addLast(20);
+		deque.addFirst(30);
+		deque.addLast(40);
+		deque.addLast(40);
+		deque.addFirst(10);
+		deque.addLast(20);
+		deque.addFirst(30);
+		deque.addLast(40);
 		boolean p1 = deque.isEmpty();
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
+		System.out.println(deque.removeFirst());
+		System.out.println(deque.removeLast());
 		System.out.println(deque.removeFirst());
 		System.out.println(deque.removeLast());
 		System.out.println(deque.get(0));
