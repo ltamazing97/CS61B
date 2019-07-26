@@ -39,28 +39,6 @@ public class TestArrayDequeGold {
 					expected, actual);
 		}
 
-		//removeFirst
-		List<Integer> actualList1 = new ArrayList<>();
-		List<Integer> expectedList1 = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			actualList1.add(sad.removeFirst());
-			expectedList1.add(ads.removeFirst());
-		}
-		for (int i = 0; i < 10; i++) {
-			int actual = actualList1.get(i);
-			int expected = expectedList1.get(i);
-			assertEquals("Oh noooo!\nThis is bad in removeFirst():\n   Random number " + actual
-							+ " not equal to " + expected + "!",
-					expected, actual);
-		}
-		for (int i = 0; i < 10; i++) {
-			int actual = sad.get(i);
-			int expected = ads.get(i);
-			assertEquals("Oh noooo!\nThis is bad in removeFirst():\n   Random number " + actual
-							+ " not equal to " + expected + "!",
-					expected, actual);
-		}
-
 		//removeLast
 		List<Integer> actualList2 = new ArrayList<>();
 		List<Integer> expectedList2 = new ArrayList<>();
@@ -83,5 +61,19 @@ public class TestArrayDequeGold {
 					expected, actual);
 		}
 
+		//removeFirst
+		List<Integer> actualList1 = new ArrayList<>();
+		List<Integer> expectedList1 = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			actualList1.add(sad.removeFirst());
+			expectedList1.add(ads.removeFirst());
+		}
+		for (int i = 0; i < 10; i++) {
+			int actual = actualList1.get(i);
+			int expected = expectedList1.get(i);
+			assertEquals("Oh noooo!\nThis is bad in removeFirst():\n   Random number " + actual
+							+ " not equal to " + expected + "!",
+					expected, actual);
+		}
 	}
 }
