@@ -66,4 +66,19 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
+    @Test
+    public void testSkippify() {
+        IntList A = IntList.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        A.skippify();
+        IntList exp = IntList.of(1, 3, 6, 10);
+        assertEquals(exp, A);
+    }
+
+    @Test
+    public void testRemoveDuplicates() {
+        IntList A = IntList.of(1, 2, 2, 2, 3);
+        IntList.removeDuplicates(A);
+        IntList exp = IntList.of(1, 2, 3);
+        assertEquals(exp, A);
+    }
 }

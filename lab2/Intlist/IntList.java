@@ -115,20 +115,37 @@ public class IntList {
 
     }
 
+    public void skippify() {
+        IntList p = this;
+        int n = 1;
+        while (p != null) {
+            IntList next = p.rest;
+            for (int i = 0; i < n; i++) {
+                if (next == null) {
+                    break;
+                }
+                next = next.rest;
+            }
+            p.rest = next;
+            p = p.rest;
+            n += 1;
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static void removeDuplicates(IntList p) {
+        if (p == null) {
+            return;
+        }
+        IntList current = p;
+        IntList previous = p;
+        while (current != null) {
+            if (current.first != previous.first) {
+                previous.rest = current;
+                previous = current;
+            }
+            current = current.rest;
+        }
+    }
 
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
